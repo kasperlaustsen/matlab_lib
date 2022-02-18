@@ -1,0 +1,32 @@
+function myfigexport = myfigexport(saveDir, figures, fileNames, createNewFolder, folderName, resolution)
+	% Export figures
+	% Inputs: saveDir, figures, fileNames, createNewFolder, folderName, resolution
+	% saveDir				: directory in '' string
+	% figures				: figure array [figure() figure()]
+	% fileNames				: file name array ["name1.png" "name2.png"]
+	% createNewFolder: 'true' or 'false' - depending on whether you want to
+	% folderName			: folder name in '' string
+	% resolution			: absolute number.. Default: 300
+	
+	% Default resolution
+	if nargin == 5
+		resolution = 300;
+	end
+
+	% Just change savepath to whichever fits you!
+	if createNewFolder == 'true'
+		mkdir(saveDir, folderName);				% Create folder
+		savePath = [saveDir '/' folderName];	% Save path for figures
+	else
+		savePath = saveDir;						% Save path for figures
+	end
+	
+	fileName = fileNames;
+	
+	for i=1:length(figures)
+    	f = fullfile(savePath, append(fileName(i)));
+    	exportgraphics(figures(i), f,'Resolution', resolution);
+	end
+
+
+end
