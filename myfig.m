@@ -8,7 +8,7 @@ function fig = myfig(fignumber, position)
 	
 	% Default position
 	if nargin == 1
-		position = [0 500 600 400];
+		position = [0 500 700 500];
 	end
 	
 	if fignumber > 0
