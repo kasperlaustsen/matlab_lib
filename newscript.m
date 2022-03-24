@@ -8,7 +8,7 @@ function [] = newscript()
 [functionpath,~,~] = fileparts(mfilename('fullpath'))
 
 % Pop up save window to specify file name and path
-[file,path,indx] = uiputfile()
+[file,path,indx] = uiputfile('x.m')
 
 % Concentate path and filename
 pathandname = strcat(path, file)
