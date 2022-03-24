@@ -3,7 +3,6 @@ function fig = myfig(fignumber, positionIn)
 	% Inputs: fignumber, position
 	%	- fignumber: The figure number
 	%	- position: Position and size array [x y width height] or [width height]
-	%			x and y are in the range 0 -> 1 where 0.5 is in the middle
 	% Outputs: figure handler
 	
 	% Default figure width and height
@@ -32,12 +31,13 @@ function fig = myfig(fignumber, positionIn)
 		if sizePosIn(2) == 2
 			position = [defaultPosition(1:2) positionIn];
 		else
-			xpos = positionIn(1) * screenXres-positionIn(3)/2;
-			ypos = positionIn(2) * screenYres-positionIn(4)/2;
-			position = [xpos ypos positionIn(3) positionIn(4)];
+			defxpos = 0 * screenXres-positionIn(1)/2;
+			defypos = 0.5 * screenYres-defheight/2;
+			position = positionIn;
 		end
 	end
 
+	
 	if fignumber > 0
 		fig = figure(fignumber);
 	else
