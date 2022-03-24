@@ -5,20 +5,20 @@ function [] = newscript()
 % this function
 
 % Get function path (where the template file should be)
-[functionpath,~,~] = fileparts(mfilename('fullpath'))
+[functionpath,~,~] = fileparts(mfilename('fullpath'));
 
 % Pop up save window to specify file name and path
-[file,path,indx] = uiputfile('x.m')
+[file,path,indx] = uiputfile('x.m');
 
 % Concentate path and filename
-pathandname = strcat(path, file)
+pathandname = strcat(path, file);
 
 %concentate function path and name of script
-funcpathnname = strcat(functionpath, '/newScriptTemplate.m')
+funcpathnname = strcat(functionpath, '/newScriptTemplate.m');
 
 % Copy template from function folder to selected destination folder with
 % selected name
-copyfile(funcpathnname, pathandname)
+copyfile(funcpathnname, pathandname);
 
 % Edit the file
-edit(pathandname)
+edit(pathandname);
