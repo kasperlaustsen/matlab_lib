@@ -28,5 +28,5 @@ function myfigexport = myfigexport(saveDir, figures, fileNames, createNewFolder,
     	exportgraphics(figures(i), f,'Resolution', resolution);
 	end
 
-
+	
 end
