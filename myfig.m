@@ -38,8 +38,8 @@ function fig = myfig(fignumber, positionIn)
 	end
 
 	% Define x and y position based on screen resolution
-	xpos = position(1) * screenXres-position(3)/2
-	ypos = position(2) * screenYres-position(4)/2
+	xpos = position(1) * screenXres-position(3)/2;
+	ypos = position(2) * screenYres-position(4)/2;
 
 
 	% Contain the figure inside the screen if position is beyond borders
