@@ -3,10 +3,8 @@
 % ======================
 clc;clear;close all;
 
-% Default figure size
-fwidth = 600; fheight = 400;	% Height and width of figures in pixels
-fXpos = 0; fYpos = 0.5;			% Position of figures (between 0 and 1)
-figpos = [fXpos fYpos fwidth fheight];
+% Default figure size: [xpos ypos width height]
+figpos = [0 0.5 600 400];
 
 % Example on how to use a figure:
 % f = myfig(-1, figpos);
