@@ -24,7 +24,7 @@ function fig = myfig(fignumber, positionIn)
 
 	if nargin == 1
 		% No position argument given: Use defualt position
-		position = defaultPosition
+		position = defaultPosition;
 	elseif nargin == 2
 		sizePosIn = size(positionIn);		% Calculate size of input position
 
