@@ -6,17 +6,31 @@ function myfigexport = myfigexport(saveDir, figures, fileNames, createNewFolder,
 	% fileNames				: file name array ["name1.png" "name2.png"]
 	% createNewFolder: 'true' or 'false' - depending on whether you want to
 	% folderName			: folder name in '' string
-	% resolution			: absolute number.. Default: 300
+	% resolution			: absolute number.. Default: 400
+	
+	% Check if windows computer or mac
+	if ispc
+		% Windows
+		dirSplit = '\';
+	else
+		% Mac
+		dirSplit = '/';
+	end
 	
 	% Default resolution
 	if nargin == 5
-		resolution = 300;
+		resolution = 400;
+	end
+	
+	% If "\" or "/" at end of path. Remove it - otherwise an error occurs
+	if saveDir(end) == dirSplit
+		saveDir(end) == '';
 	end
 
 	% Just change savepath to whichever fits you!
-	if createNewFolder == 'true'
-		mkdir(saveDir, folderName);				% Create folder
-		savePath = [saveDir '/' folderName];	% Save path for figures
+	if createNewFolder == 1
+		mkdir(saveDir, folderName);							% Create folder
+		savePath = strcat(saveDir, dirSplit, folderName);	% Save path for figures
 	else
 		savePath = saveDir;						% Save path for figures
 	end
@@ -24,7 +38,7 @@ function myfigexport = myfigexport(saveDir, figures, fileNames, createNewFolder,
 	fileName = fileNames;
 	
 	for i=1:length(figures)
-    	f = fullfile(savePath, append(fileName(i)));
+    	f = strcat(savePath, dirSplit, fileName(i));
     	exportgraphics(figures(i), f,'Resolution', resolution);
 	end
 
