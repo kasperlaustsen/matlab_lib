@@ -17,19 +17,18 @@ function f = myfigplot(figNum, wantedPlots, wantedSims, Xdata, sensorData, ...
 	% xlimits			: ex. xlimits = [0 1]. if xlimits = 0 then it's not set
 	% ylimits			: ex. ylimits = [0 100]. if ylimits = 0 then it's not set
 	% gridOn			: 1 if grid should be on. 0 if it should be off
-	
 	Nplots = length(wantedPlots);
 	switch Nplots
 		case 1
-			figSize = [1 0.25 700 400];
+			figSize = [1 0.25 700 200];
 		case 2
-			figSize = [1 0.25 700 600];
+			figSize = [1 0.25 700 350];
 		case 3
-			figSize = [1 0.25 700 800];
+			figSize = [1 0.25 700 550];
 		case 4
-			figSize = [1 0.25 700 1000];
+			figSize = [1 0.25 700 750];
 		case 5
-			figSize = [1 0.25 700 1000];
+			figSize = [1 0.25 700 950];
 	end
 	
 	if plottype
@@ -52,8 +51,9 @@ function f = myfigplot(figNum, wantedPlots, wantedSims, Xdata, sensorData, ...
 		if length(xlimits) > 1
 			xlim(xlimits)
 		end
-		if length(ylimits) > 1
-			ylim(ylimits)
+		
+		if size(ylimits,2) > 1
+			ylim(ylimits(ii,:))
 		end
 		
 		if gridOn
@@ -61,9 +61,15 @@ function f = myfigplot(figNum, wantedPlots, wantedSims, Xdata, sensorData, ...
 		end
 
 		title(titles(wantedPlots(ii)))
-		xlabel(xlabelstr)
+		if ii == length(wantedPlots)
+			% Only put time/frequency label on last plot
+			xlabel(xlabelstr)
+		end
 		ylabel(ylabels(wantedPlots(ii)))
-		legend(simNames(wantedSims))
+		if ii == 1
+			% only put legend on first subplot
+			legend(simNames(wantedSims))
+		end
 	end
 	linkaxes(axs,'x');
 	
