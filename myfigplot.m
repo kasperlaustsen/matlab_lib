@@ -52,8 +52,13 @@ function f = myfigplot(figNum, wantedPlots, wantedSims, Xdata, sensorData, ...
 			xlim(xlimits)
 		end
 		
-		if size(ylimits,2) > 1
-			ylim(ylimits(ii,:))
+		if not(isnumeric(ylimits))
+			% Check if an array of ylims is input in stead of just 0
+			if length(ylimits{ii}) == 2
+				% Check the ylim index to see if the subplot has a
+				% designated ylim setup.
+				ylim(ylimits{ii})
+			end
 		end
 		
 		if gridOn
