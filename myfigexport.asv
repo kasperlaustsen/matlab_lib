@@ -7,7 +7,7 @@ function myfigexport = myfigexport(saveDir, figures, fileNames, createNewFolder,
 	% createNewFolder: "true" or "false" - depending on whether you want to
 	% folderName			: folder name in '' string
 	% resolution			: absolute number.. Default: 300
-	% NOTE!: big difference between "" and '' in above notation
+	% NOTE!: big difference between "
 	
 	% Default resolution
 	if nargin == 5
