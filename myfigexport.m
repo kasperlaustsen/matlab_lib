@@ -4,11 +4,9 @@ function myfigexport = myfigexport(saveDir, figures, fileNames, createNewFolder,
 	% saveDir				: directory in '' string NOT "" string!!!!
 	% figures				: figure array [figure() figure()]
 	% fileNames				: file name array ["name1.png" "name2.png"]
-	% createNewFolder: "true" or "false" - depending on whether you want to
+	% createNewFolder		: "true" or "false" - depending on whether you want to
+	% 						  create a new folder for the figures.
 	% folderName			: folder name in '' string
-	% resolution			: absolute number.. Default: 300
-	% resolution			: absolute number.. Default: 300
-	% NOTE!: big difference between "" and '' in above notation
 	% resolution			: absolute number.. Default: 400
 	
 	% Check if windows computer or mac
@@ -31,13 +29,7 @@ function myfigexport = myfigexport(saveDir, figures, fileNames, createNewFolder,
 	end
 
 	% Just change savepath to whichever fits you!
-	if createNewFolder == 'true'
-		mkdir(saveDir, folderName);				% Create folder
-		savePath = [saveDir '/' folderName];	% Save path for figures
 	if (createNewFolder == "true")
-		mkdir(saveDir, folderName);				% Create folder
-		savePath = [saveDir '/' folderName];	% Save path for figures
-	if createNewFolder == 1
 		mkdir(saveDir, folderName);							% Create folder
 		savePath = strcat(saveDir, dirSplit, folderName);	% Save path for figures
 	else
@@ -47,9 +39,6 @@ function myfigexport = myfigexport(saveDir, figures, fileNames, createNewFolder,
 	fileName = fileNames;
 	
 	for i=1:length(figures)
-    	f = fullfile(savePath, append(fileName(i)));
-    	f = fullfile(savePath, append(fileName(i)));
-
     	f = strcat(savePath, dirSplit, fileName(i));
     	exportgraphics(figures(i), f,'Resolution', resolution);
 	end
