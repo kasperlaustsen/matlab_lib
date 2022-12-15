@@ -6,7 +6,7 @@ function latexString = printlatexmatrix(matrix)
 	M = matrix;
 	
 	% anonymous function to handle complex values
-	zprintf = @(z) sprintf('%6.3f + %6.3fi', z, z/1i)
+	zprintf = @(z) sprintf('%6.3f + %6.3fi', z, z/1i);
 
 	%% Convert
 	% Get matrix dimensions
