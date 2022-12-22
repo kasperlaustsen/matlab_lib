@@ -42,7 +42,7 @@ function f = myfigplot(figNum, wantedPlots, wantedSims, Xdata, sensorData, ...
 		axs(ii) = subplot(length(wantedPlots), 1, ii);
 
 		for nn = wantedSims
-			plot(Xdata{nn}, sensorData{nn}(:,wantedPlots(ii)))
+			plot(Xdata{nn}, sensorData{nn}(:,wantedPlots(ii)), 'LineWidth', 1.2)
 			hold on
 		end
 		hold off

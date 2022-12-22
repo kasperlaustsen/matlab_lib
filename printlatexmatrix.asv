@@ -6,7 +6,7 @@ function latexString = printlatexmatrix(matrix)
 	M = matrix;
 	
 	% anonymous function to handle complex values
-	zprintf = @(z) sprintf('%6.3f + %6.3fi', z, z/1i);
+	zprintf = @(z) sprintf('%f + %fi', z, z/1i)
 
 	%% Convert
 	% Get matrix dimensions
@@ -17,13 +17,9 @@ function latexString = printlatexmatrix(matrix)
 	% Add matrix content
 	for k = 1:m
 		for l = 1:n
-			
-			if isreal(M(k,l))
-				s = sprintf('%s %6.3f', s, M(k, l)); % print 3 decimal places, align to 6 characters
-			else
-				z = zprintf(M(k, l));
-				s = sprintf('%s %s', s, z); % print 3 decimal places, align to 6 characters
-			end
+
+			s = sprintf('%s %6.3f', s, M(k, l)); % print 3 decimal places, align to 6 characters
+
 
 			if l < n
 				s = sprintf('%s &', s);
