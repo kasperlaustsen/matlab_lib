@@ -35,6 +35,7 @@ function f = myfigplot(figNum, wantedPlots, wantedSims, Xdata, sensorData, ...
 		xlabelstr = "Time [s]";
 	else
 		xlabelstr = "Frequency [Hz]";
+		titles = strcat("FFT of ",titles);
 	end
 	
 	f = myfig(figNum, figSize);
@@ -70,14 +71,7 @@ function f = myfigplot(figNum, wantedPlots, wantedSims, Xdata, sensorData, ...
 			% Only put time/frequency label on last plot
 			xlabel(xlabelstr)
 		end
-		
-		% If FFT then set ylabel to default fft ylabel
-		if plottype
-			ylabel(ylabels(wantedPlots(ii)))
-		else
-			ylabel("Amplitude")
-		end
-		
+		ylabel(ylabels(wantedPlots(ii)))
 		if ii == 1
 			% only put legend on first subplot
 			legend(simNames(wantedSims))
