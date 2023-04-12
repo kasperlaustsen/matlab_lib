@@ -7,8 +7,24 @@
 % - I use my own function for exporting figures
 
 
+%% Defining default figure sizes for use with the myfig function
 
-%% 1. Setup for exporting figures
+defWidth = 700;
+defXpos = 1;
+defYpos = 0.25;
+figSize.one =	[defXpos defYpos defWidth 300];
+figSize.two =	[defXpos defYpos defWidth 400];
+figSize.three = [defXpos defYpos defWidth 550];
+figSize.four =	[defXpos defYpos defWidth 670];
+
+% EXAMPLE of use:
+myfig(1,figSize.two)
+subplot(211)
+plot(something)
+subplot(212)
+plot(somethingelse)
+
+%% Setup for exporting figures
 % ------------------------------------
 % In order to easily export figures do the following:
 
@@ -67,13 +83,15 @@ set(groot,'defaultAxesFontSize', 13)					% Default is 10
 % Set default line width
 set(groot, 'DefaultLineLineWidth', 1.3);
 
-%% Using Figure handle to include lines, set legends, change figure axes properties etc.
+%% Using gca or figure handle to include lines, set legends, change figure axes properties etc.
 
 % When using "f = myfig()" or "f = figure" you get a figure handle "f"
 % This can be used to retrieve axes from the figure e.g. in a subplot.
 % Often for loops and functions are used to plot figurs and thus it's not
 % convenient to customize each subplot w.r.t setting xlines/ylines or other
 % stuff in the functions or for loops.
+% Also sometimes gca can simply be used. This will retreive the latest
+% defined axes.
 
 % EXAMPLE:
 f = myfig(-1)
@@ -92,7 +110,7 @@ legend(axes(4), 'Location', 'north')
 annotation(f, 'textarrow',[0.25 0.18],[0.85 0.83],'String','1st mode');
 
 
-%% Xline, Yline and textarrows
+%% Annotations: Xline, Yline and textarrows
 
 % Xline/yline
 xline(axes, point_on_xaxis, '--', {'LabelName'}, ...
@@ -103,3 +121,16 @@ xline(axes, point_on_xaxis, '--', {'LabelName'}, ...
 % Using text arrows. The position of these is based on the figure size and
 % not the individual axes on a subplot!
 annotation(f, 'textarrow',[x_start x_end],[y_start y_end], 'String','LabelName');
+
+%% Linking axes
+
+% Two ways:
+
+% 1:
+ax = gca;
+linkaxes(ax, 'x')
+
+% 2:
+f = myfig(-1);
+ax = findobj(f, 'type', 'axes');
+linkaxes(ax, 'x')
