@@ -4,6 +4,11 @@ function latexString = printlatexmatrix(matrix)
 	% Choose matrix to convert
 
 	M = matrix;
+
+	% Check if matrix contains symbols. If thats the case = error
+	if isa(M, 'sym')
+		disp('ERROR: matrix cannot contain symbols')
+	end
 	
 	% anonymous function to handle complex values
 	zprintf = @(z) sprintf('%6.3f + %6.3fi', z, z/1i);
