@@ -71,7 +71,14 @@ function f = myfigplot(figNum, wantedPlots, wantedSims, Xdata, sensorData, ...
 			% Only put time/frequency label on last plot
 			xlabel(xlabelstr)
 		end
-		ylabel(ylabels(wantedPlots(ii)))
+
+		% Set ylabel to "Amplitude" if plot type is an fft
+		if plottype
+			ylabel(ylabels(wantedPlots(ii)))
+		else
+			ylabel("Amplitude")
+		end
+
 		if ii == 1
 			% only put legend on first subplot
 			legend(simNames(wantedSims))
