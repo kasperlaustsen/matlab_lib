@@ -79,6 +79,14 @@ end
 % Get list of settings that can be changed:
 % get(groot, 'factory')
 set(groot,'defaultAxesFontSize', 13)					% Default is 10
+% Note: this does not always set all font sizes to the set value. e.g.
+% notations like xline are often not set
+% Another option is to put this at the end of the script
+% Find all open figures
+allFigures = findall(0,'Type','Figure');
+% Set fontsize
+myFontSize = 13;
+set(findall(allFigures, '-property', 'fontsize'), 'fontsize', myFontSize)
 
 % Set default line width
 set(groot, 'DefaultLineLineWidth', 1.3);
