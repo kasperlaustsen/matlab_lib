@@ -89,7 +89,29 @@ myFontSize = 13;
 set(findall(allFigures, '-property', 'fontsize'), 'fontsize', myFontSize)
 
 % Set default line width
-set(groot, 'DefaultLineLineWidth', 1.3);
+set(groot, 'DefaultLineLineWidth', 1.2); % Default 0.5
+
+
+% This for loop can be used to find default entries that contains some text
+% string in its name.
+% listFactory = fieldnames(get(groot,'factory'));
+% indexName = find(contains(listFactory,'FontSize'));
+% for i = 1:length(indexName)
+%     defaultName = strrep(listFactory{indexName(i)},'factory','default');
+%     disp(defaultName)
+% end
+
+
+% Define plotColors
+% - These are the default matlab plot plotColors
+plotColors.blue			= "#0072BD";
+plotColors.orange		= "#D95319";
+plotColors.yellow		= "#EDB120";
+plotColors.purple		= "#7E2F8E";
+plotColors.green		= "#77AC30";
+plotColors.lightblue	= "#4DBEEE";
+plotColors.red			= "#A2142F";
+
 
 %% Using gca or figure handle to include lines, set legends, change figure axes properties etc.
 
@@ -102,7 +124,7 @@ set(groot, 'DefaultLineLineWidth', 1.3);
 % defined axes.
 
 % EXAMPLE:
-f = myfig(-1)
+f = myfig(-1);
 for ii = 1:4
 	subplot(ii,1,4)
 	plot(something)
