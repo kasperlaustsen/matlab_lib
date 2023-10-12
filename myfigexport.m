@@ -17,11 +17,11 @@ function myfigexport = myfigexport(savePath, figures, fileNames, createSubFolder
 
 	% Just change savepath to whichever fits you!
 	if (createSubFolder == "true")
-		if isfolder(subFoldeName)
+		if isfolder(subFolderName)
 			% do nothing if folder already exists
 			savePath = fullfile(savePath, subFolderName);	% Save path for figures
 		else
-			mkdir(savePath, subFoldeName);							% Create folder
+			mkdir(savePath, subFolderName);							% Create folder
 			savePath = fullfile(savePath, subFolderName);	% Save path for figures
 		end
 	else
