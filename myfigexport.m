@@ -1,4 +1,4 @@
-function myfigexport = myfigexport(savePath, figures, fileNames, createSubFolder, subFolderName, resolution)
+function myfigexport = myfigexport(savePathIn, figures, fileNames, createSubFolder, subFolderName, resolution)
 	% Export figures
 	% Inputs: saveDir, figures, fileNames, createNewFolder, folderName, resolution
 	% savePath				: Path where figures are saved (unless it is
@@ -19,13 +19,13 @@ function myfigexport = myfigexport(savePath, figures, fileNames, createSubFolder
 	if (createSubFolder == "true")
 		if isfolder(subFolderName)
 			% do nothing if folder already exists
-			savePath = fullfile(savePath, subFolderName);	% Save path for figures
+			savePath = fullfile(savePathIn, subFolderName);	% Save path for figures
 		else
-			mkdir(savePath, subFolderName);							% Create folder
-			savePath = fullfile(savePath, subFolderName);	% Save path for figures
+			mkdir(savePathIn, subFolderName);							% Create folder
+			savePath = fullfile(savePathIn, subFolderName);	% Save path for figures
 		end
 	else
-		savePath = savePath;		% Save path for figures
+		savePath = savePathIn;		% Save path for figures
 	end
 	
 	fileName = fileNames;
